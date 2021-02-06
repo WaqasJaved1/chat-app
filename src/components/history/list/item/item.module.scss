@@ -1,0 +1,52 @@
+@import './../../../../colors.scss';
+
+.item {
+    width: 100%;
+    text-align: left;
+    color: white;
+
+    .content {
+        display: flex;
+        align-items: center;
+        flex: 1;
+
+        .details {
+            flex: 1;
+
+            .title {
+                font-size: 15px;
+                font-weight: bold;
+            }
+
+            .description {
+                font-size: 12px;
+            }
+        }
+
+        .badge {
+            margin: 10px;
+            background-color: white;
+            border-radius: 50%;
+            width: 16px;
+            height: 16px;
+            text-align: center;
+            align-items: center;
+            color: $primary-color;
+            font-weight: bold;
+        }
+    }
+
+    .avatar {
+        width: 48px;
+        height: 48px;
+
+        margin: 10px;
+
+        img {
+            background-color: $gray-100;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+        }
+    }
+}

@@ -1,9 +1,8 @@
 .app {
     display: flex;
-    height: calc(100vh - 20px);
+    height: 100vh;
 
     > div {
-        padding: 10px;
         min-width: 300px;
     }
 

@@ -1,6 +1,19 @@
 @import './../../colors.scss';
 
-.historyWrapper {
+.history {
     background-color: $primary-color;
     color: white;
+
+    .headerWrapper {
+        margin: 20px;
+    }
+
+    .searchWrapper {
+        margin: 20px;
+    }
+
+    .tabWrapper {
+        overflow-y: scroll;
+        max-height: calc(100vh - 180px);
+    }
 }

@@ -1,0 +1,12 @@
+.tabs {
+    .header {
+        display: flex;
+        align-items: center;
+
+        button {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+        }
+    }
+}
