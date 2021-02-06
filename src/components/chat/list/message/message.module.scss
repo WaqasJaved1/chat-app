@@ -1,0 +1,51 @@
+@import './../../../../colors.scss';
+
+.message {
+    margin: 10px;
+    width: fit-content;
+
+    .avatar {
+        width: 32px;
+        height: 32px;
+
+        img {
+            background-color: $gray-200;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+        }
+    }
+
+    .text {
+        font-size: small;
+        width: fit-content;
+        padding: 10px;
+    }
+
+    &.right {
+        margin-left: auto;
+        justify-content: right;
+
+        .avatar {
+            margin-left: auto;
+        }
+
+        .text {
+            border-radius: 6px 6px 0px 6px;
+            color: white;
+            margin-right: 48px;
+            margin-left: auto;
+            background-color: $primary-color;
+        }
+    }
+
+    &.left {
+        justify-content: left;
+
+        .text {
+            border-radius: 6px 6px 6px 0px;
+            margin-left: 48px;
+            background-color: $gray-200;
+        }
+    }
+}

@@ -6,10 +6,15 @@ body {
         'Droid Sans', 'Helvetica Neue', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: $mat-black;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+input {
+    transition: all 0.5s;
 }
 
 button {
@@ -20,12 +25,18 @@ button {
     cursor: pointer;
     padding: 6px;
 
+    transition: all 0.5s;
+
     &:hover {
         background-color: rgba($color: #fff, $alpha: 0.4);
     }
 
     &:focus {
         outline: none;
+    }
+
+    &.btn-round {
+        border-radius: 50%;
     }
 }
 
@@ -50,5 +61,5 @@ ul {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: $mat-black;
+    background: $gray-200;
 }

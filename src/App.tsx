@@ -9,7 +9,7 @@ function App() {
         <div className="app">
             <History />
             <Chat />
-            <Details />
+            {/* <Details /> */}
         </div>
     );
 }

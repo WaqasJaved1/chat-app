@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './item.module.scss';
 
-function ItemA() {
+function Item() {
     return (
         <button className={styles.item}>
             <div className={styles.avatar}>
@@ -18,4 +18,4 @@ function ItemA() {
     );
 }
 
-export default ItemA;
+export default Item;

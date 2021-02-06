@@ -1,0 +1,29 @@
+@import './../../../colors.scss';
+
+.header {
+    padding: 20px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+
+    .userinfo {
+        display: flex;
+        align-items: center;
+
+        font-size: x-large;
+        font-weight: bold;
+
+        .status {
+            margin: 0px 10px;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+
+            &.online {
+                background-color: $green;
+            }
+
+            &.offline {
+                background-color: lightslategray;
+            }
+        }
+    }
+}
