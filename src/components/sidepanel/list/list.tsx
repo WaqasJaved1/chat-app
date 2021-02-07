@@ -11,7 +11,7 @@ interface ListProps {
 function List(Props: ListProps) {
     const { elements, searchBy } = Props;
 
-    const [list, setList] = useState<ItemProps[] | undefined>(elements);
+    const [list, setList] = useState<ItemProps[] | undefined>([]);
 
     if (elements) {
         useSearchHook(elements, searchBy, (e) => {
