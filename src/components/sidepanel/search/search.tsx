@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchIcon from '../../../icons/search-icon';
 import CloseIcon from '../../../icons/close-icon';
+import cx from 'classnames';
 
 import styles from './search.module.scss';
 
@@ -17,11 +18,18 @@ function Search(Props: SearchProps) {
         onChange && onChange(event.target.value);
     };
 
+    const clear = () => {
+        setSearchBy('');
+        onChange && onChange('');
+    };
+
     return (
         <div className={styles.search}>
             <SearchIcon size="24px" color="white" className={styles.searchIcon} />
             <input placeholder="Search" type="text" value={searchBy} onChange={_handleOnChange} />
-            <CloseIcon size="12px" color="white" className={styles.clearIcon} />
+            <button className={cx('btn-round', styles.clearBtn)} onClick={clear}>
+                <CloseIcon size="12px" color="white" className={styles.clearIcon} />
+            </button>
         </div>
     );
 }
