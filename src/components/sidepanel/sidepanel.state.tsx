@@ -81,6 +81,41 @@ export function SidepanelWrapper({ children }: any) {
                             title: 'Mat Murphy',
                             image: 'https://picsum.photos/100?id=3',
                         },
+                        {
+                            id: 4,
+                            title: 'John',
+                            image: 'https://picsum.photos/100?id=4',
+                        },
+                        {
+                            id: 5,
+                            title: 'Rachel Green',
+                            image: 'https://picsum.photos/100?id=5',
+                        },
+                        {
+                            id: 6,
+                            title: 'Joey',
+                            image: 'https://picsum.photos/100?id=6',
+                        },
+                        {
+                            id: 7,
+                            title: 'Monica Gellar',
+                            image: 'https://picsum.photos/100?id=7',
+                        },
+                        {
+                            id: 8,
+                            title: 'Thomas Shelby',
+                            image: 'https://picsum.photos/100?id=8',
+                        },
+                        {
+                            id: 9,
+                            title: 'Arthur Shelby',
+                            image: 'https://picsum.photos/100?id=9',
+                        },
+                        {
+                            id: 10,
+                            title: 'John Shelby',
+                            image: 'https://picsum.photos/100?id=10',
+                        },
                     ],
                 });
             }, 2000);
