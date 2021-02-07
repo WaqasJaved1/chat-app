@@ -31,14 +31,14 @@ export function SidepanelWrapper({ children }: any) {
                     data: [
                         {
                             id: 1,
-                            title: 'Waqas Javed',
+                            title: 'Nildo Junior',
                             image: 'https://picsum.photos/100?id=1',
                             description: 'Hello',
                             badge: '3',
                         },
                         {
                             id: 2,
-                            title: 'Nildo Junior',
+                            title: 'Waqas Javed',
                             image: 'https://picsum.photos/100?id=2',
                             description: 'Typing...',
                             badge: undefined,
@@ -69,12 +69,12 @@ export function SidepanelWrapper({ children }: any) {
                     data: [
                         {
                             id: 1,
-                            title: 'Waqas Javed',
+                            title: 'Nildo Junior',
                             image: 'https://picsum.photos/100?id=1',
                         },
                         {
                             id: 2,
-                            title: 'Nildo Junior',
+                            title: 'Waqas Javed',
                             image: 'https://picsum.photos/100?id=2',
                         },
                         {

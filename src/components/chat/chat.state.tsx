@@ -4,6 +4,7 @@ import { MessageProps } from './list/message/message';
 
 interface ChatContextValue {
     chat: UiState<MessageProps[]>;
+    loadChat: () => void;
     sendNewMessage: (text: string, to: number) => void;
 }
 
@@ -12,55 +13,47 @@ const ChatContext: any = createContext<null | ChatContextValue>(null);
 export function ChatWrapper({ children }: any) {
     const [chat, setChat] = useState<UiState<MessageProps[]>>({ loading: true, error: false });
 
-    useEffect(() => {
-        loadChat();
-    }, []);
-
     const loadChat = async () => {
-        if (chat.data) {
-            return;
-        } else {
-            setChat({ loading: true, error: false });
-            // Mock Loading
-            setTimeout(() => {
-                setChat({
-                    loading: false,
-                    error: false,
-                    data: [
-                        {
-                            id: 1,
-                            text: 'Hey',
-                            image: 'https://picsum.photos/100?id=1',
-                            position: 'left',
-                        },
-                        {
-                            id: 2,
-                            text: 'Hi',
-                            image: 'https://picsum.photos/100?id=2',
-                            position: 'right',
-                        },
-                        {
-                            id: 3,
-                            text: 'How are you?',
-                            image: 'https://picsum.photos/100?id=1',
-                            position: 'left',
-                        },
-                        {
-                            id: 4,
-                            text: 'I am good wau?',
-                            image: 'https://picsum.photos/100?id=2',
-                            position: 'right',
-                        },
-                        {
-                            id: 5,
-                            text: 'Me good',
-                            image: 'https://picsum.photos/100?id=1',
-                            position: 'left',
-                        },
-                    ],
-                });
-            }, 2000);
-        }
+        setChat({ loading: true, error: false });
+        // Mock Loading
+        setTimeout(() => {
+            setChat({
+                loading: false,
+                error: false,
+                data: [
+                    {
+                        id: 1,
+                        text: 'Hey',
+                        image: 'https://picsum.photos/100?id=1',
+                        position: 'left',
+                    },
+                    {
+                        id: 2,
+                        text: 'Hi',
+                        image: 'https://picsum.photos/100?id=2',
+                        position: 'right',
+                    },
+                    {
+                        id: 3,
+                        text: 'How are you?',
+                        image: 'https://picsum.photos/100?id=1',
+                        position: 'left',
+                    },
+                    {
+                        id: 4,
+                        text: 'I am good wau?',
+                        image: 'https://picsum.photos/100?id=2',
+                        position: 'right',
+                    },
+                    {
+                        id: 5,
+                        text: 'Me good',
+                        image: 'https://picsum.photos/100?id=1',
+                        position: 'left',
+                    },
+                ],
+            });
+        }, 2000);
     };
 
     const sendNewMessage = (text: string, to: number) => {
@@ -82,6 +75,7 @@ export function ChatWrapper({ children }: any) {
 
     const sharedState: ChatContextValue = {
         chat,
+        loadChat,
         sendNewMessage,
     };
     return <ChatContext.Provider value={sharedState}>{children}</ChatContext.Provider>;

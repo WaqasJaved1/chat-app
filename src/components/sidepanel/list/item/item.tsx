@@ -1,5 +1,7 @@
 import React from 'react';
+import { useAppContext } from '../../../../App.state';
 import styles from './item.module.scss';
+import cx from 'classnames';
 
 export interface ItemProps {
     id: number;
@@ -10,10 +12,12 @@ export interface ItemProps {
 }
 
 function Item(Props: ItemProps) {
-    const { title, image, description, badge } = Props;
+    const { id, title, image, description, badge } = Props;
+
+    const { userInfo, setUserInfo } = useAppContext();
 
     return (
-        <button className={styles.item}>
+        <button className={cx(styles.item, userInfo.id === id ? 'selected' : '')} onClick={() => setUserInfo(Props)}>
             <div className={styles.avatar}>
                 <img src={image} />
             </div>
