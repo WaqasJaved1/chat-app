@@ -38,6 +38,10 @@ button {
     &.btn-round {
         border-radius: 50%;
     }
+
+    &.selected {
+        background-color: rgba($color: #fff, $alpha: 0.2);
+    }
 }
 
 ul {

@@ -1,23 +1,35 @@
 import React, { ReactChild } from 'react';
-import HistoryIcon from '../../icons/history-icon';
-import PeopleIcon from '../../icons/people-icon';
 import styles from './tabs.module.scss';
 
-interface Props {
-    children: ReactChild;
+export interface TabItem<T> {
+    tab: T;
+    icon: React.ReactChild;
 }
 
-function Tabs(props: Props) {
-    const { children } = props;
+export interface TabProps<T> {
+    tabs: TabItem<T>[];
+    currentTab: T;
+    onChange: (event: T) => void;
+}
+
+function Tabs<T extends string>(
+    props: TabProps<T> & {
+        children: ReactChild;
+    },
+) {
+    const { children, currentTab, tabs, onChange } = props;
     return (
         <div className={styles.tabs}>
             <div className={styles.header}>
-                <button>
-                    <HistoryIcon size="20px" color="white" />
-                </button>
-                <button>
-                    <PeopleIcon size="24px" color="white" />
-                </button>
+                {tabs.map((e) => (
+                    <button
+                        onClick={() => onChange(e.tab)}
+                        key={e.tab}
+                        className={e.tab === currentTab ? 'selected' : ''}
+                    >
+                        {e.icon}
+                    </button>
+                ))}
             </div>
 
             <div className={styles.content}>{children}</div>
