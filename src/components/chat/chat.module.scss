@@ -3,4 +3,12 @@
         height: calc(100vh - 150px);
         overflow-y: scroll;
     }
+
+    .spinnerWrapper {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+    }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.scss';
 import Chat from './components/chat/chat';
+import { ChatWrapper } from './components/chat/chat.state';
 import Details from './components/details/details';
 import Sidepanel from './components/sidepanel/sidepanel';
 import { SidepanelWrapper } from './components/sidepanel/sidepanel.state';
@@ -11,7 +12,9 @@ function App() {
             <SidepanelWrapper>
                 <Sidepanel />
             </SidepanelWrapper>
-            <Chat />
+            <ChatWrapper>
+                <Chat />
+            </ChatWrapper>
             {/* <Details /> */}
         </div>
     );

@@ -1,16 +1,17 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { UiState } from '../../type';
+import { ItemProps } from './list/item/item';
 
 interface SidepanelContextValue {
-    history: UiState<any>;
-    chat: UiState<any>;
+    history: UiState<ItemProps[]>;
+    chat: UiState<ItemProps[]>;
 }
 
 const SidepanelContext: any = createContext<null | SidepanelContextValue>(null);
 
 export function SidepanelWrapper({ children }: any) {
-    const [history, setHistory] = useState<UiState<any>>({ loading: true, error: false, data: null });
-    const [chat, setChat] = useState<UiState<any>>({ loading: true, error: false, data: null });
+    const [history, setHistory] = useState<UiState<ItemProps[]>>({ loading: true, error: false });
+    const [chat, setChat] = useState<UiState<ItemProps[]>>({ loading: true, error: false });
 
     useEffect(() => {
         loadHistory();
@@ -22,7 +23,7 @@ export function SidepanelWrapper({ children }: any) {
             return;
         } else {
             // Mock Loading
-            setHistory({ loading: true, error: false, data: null });
+            setHistory({ loading: true, error: false });
             setTimeout(() => {
                 setHistory({
                     loading: false,
@@ -56,10 +57,10 @@ export function SidepanelWrapper({ children }: any) {
     };
 
     const loadChat = async () => {
-        if (history.data) {
+        if (chat.data) {
             return;
         } else {
-            setChat({ loading: true, error: false, data: null });
+            setChat({ loading: true, error: false });
             // Mock Loading
             setTimeout(() => {
                 setChat({
