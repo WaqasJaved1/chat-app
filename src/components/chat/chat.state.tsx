@@ -3,24 +3,22 @@ import { UiState } from '../../type';
 import { MessageProps } from './list/message/message';
 
 interface ChatContextValue {
-    chat: UiState<MessageProps[]>;
-    loadChat: () => void;
+    chat: Record<string, MessageProps[]>;
+    loadChat: (id: number) => Promise<MessageProps[]>;
     sendNewMessage: (text: string, to: number) => void;
 }
 
 const ChatContext: any = createContext<null | ChatContextValue>(null);
 
 export function ChatWrapper({ children }: any) {
-    const [chat, setChat] = useState<UiState<MessageProps[]>>({ loading: true, error: false });
+    const [chat, setChat] = useState<Record<string, MessageProps[]>>({});
 
-    const loadChat = async () => {
-        setChat({ loading: true, error: false });
-        // Mock Loading
-        setTimeout(() => {
-            setChat({
-                loading: false,
-                error: false,
-                data: [
+    const loadChat = async (id: number) => {
+        return new Promise<MessageProps[]>((resolve, reject) => {
+            if (chat[id.toString()]) {
+                resolve(chat[id.toString()]);
+            } else {
+                const apiResponse: MessageProps[] = [
                     {
                         id: 1,
                         text: 'Hey',
@@ -51,26 +49,25 @@ export function ChatWrapper({ children }: any) {
                         image: 'https://picsum.photos/100?id=1',
                         position: 'left',
                     },
-                ],
-            });
-        }, 2000);
+                ];
+                setChat({
+                    ...chat,
+                    [id]: apiResponse,
+                });
+
+                resolve(apiResponse);
+            }
+        });
     };
 
     const sendNewMessage = (text: string, to: number) => {
-        if (chat.data) {
-            setChat({
-                ...chat,
-                data: [
-                    ...chat.data,
-                    {
-                        id: chat.data.length + 1,
-                        text,
-                        image: 'https://picsum.photos/100?id=2',
-                        position: 'right',
-                    },
-                ],
-            });
-        }
+        setChat({
+            ...chat,
+            [to]: [
+                ...(chat[to] ? chat[to] : []),
+                { id: chat[to].length + 1, text, image: 'https://picsum.photos/100?id=2', position: 'right' },
+            ],
+        });
     };
 
     const sharedState: ChatContextValue = {
