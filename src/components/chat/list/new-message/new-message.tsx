@@ -1,5 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useAppContext } from '../../../../App.state';
+import usePrevious from '../../../../hooks/usePreviousState';
 import SendIcon from '../../../../icons/send-icon';
+import { useChatContext } from '../../chat.state';
 import styles from './new-message.module.scss';
 
 const ENTER_KEY_CODE = 13;
@@ -9,6 +12,9 @@ interface NewMessageProps {
 
 function NewMessage(Props: NewMessageProps) {
     const { onSend } = Props;
+
+    const { getDraft, updateDraft } = useChatContext();
+    const { userInfo } = useAppContext();
 
     const [message, setMessage] = useState('');
 
@@ -26,6 +32,15 @@ function NewMessage(Props: NewMessageProps) {
             _handleOnSend();
         }
     };
+
+    const val = usePrevious(userInfo.id);
+
+    useEffect(() => {
+        if (val) {
+            updateDraft(val, message);
+        }
+        setMessage(getDraft(userInfo.id));
+    }, [userInfo]);
 
     return (
         <div className={styles.newMessage}>

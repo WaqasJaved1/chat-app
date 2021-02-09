@@ -6,12 +6,15 @@ interface ChatContextValue {
     chat: Record<string, MessageProps[]>;
     loadChat: (id: number) => Promise<MessageProps[]>;
     sendNewMessage: (text: string, to: number) => void;
+    updateDraft: (id: number, msg: string) => void;
+    getDraft: (id: number) => string;
 }
 
 const ChatContext: any = createContext<null | ChatContextValue>(null);
 
 export function ChatWrapper({ children }: any) {
     const [chat, setChat] = useState<Record<string, MessageProps[]>>({});
+    const [draft, setDraft] = useState<Record<string, string>>({});
 
     const loadChat = async (id: number) => {
         return new Promise<MessageProps[]>((resolve, reject) => {
@@ -60,6 +63,17 @@ export function ChatWrapper({ children }: any) {
         });
     };
 
+    const updateDraft = (id: number, msg: string) => {
+        setDraft({
+            ...draft,
+            [id]: msg,
+        });
+    };
+
+    const getDraft = (id: number) => {
+        return draft[id] ? draft[id] : '';
+    };
+
     const sendNewMessage = (text: string, to: number) => {
         setChat({
             ...chat,
@@ -74,6 +88,8 @@ export function ChatWrapper({ children }: any) {
         chat,
         loadChat,
         sendNewMessage,
+        updateDraft,
+        getDraft,
     };
     return <ChatContext.Provider value={sharedState}>{children}</ChatContext.Provider>;
 }
